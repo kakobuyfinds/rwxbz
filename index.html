@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="robots" content="index, follow">
+  <title>ACBuy spreadsheet | CAFANS Product Finds &amp; Order Checklist</title>
+  <meta name="description" content="Browse the ACBuy spreadsheet with CAFANS product links, estimated USD prices, category filters, a downloadable shortlist and a practical pre-order checklist.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ACBuy spreadsheet | CAFANS Product Finds">
+  <meta property="og:description" content="Compare shoes, hoodies, T-shirts and jackets with direct CAFANS product links and estimated USD prices.">
+  <!--
+    Filename: index.html
+    Search review: acbuy.net presents category shortcuts and an ordering guide.
+    ac-sheet.com emphasizes catalog breadth. QCRadar highlights changing agent
+    support. This page adds named CAFANS listings with reference prices, local
+    filters, CSV export and a checklist for verifying that an item can be ordered.
+    Catalog source: https://cafans.com/
+    Indexing pending: the public URL for this new page was not provided.
+    Once published, use the final URL as the self-referencing canonical.
+    Request indexing via URL Inspection in the verified Google Search Console
+    property and submit the URL in Bing Webmaster Tools.
+    Google: https://developers.google.com/search/docs/crawling-indexing/ask-google-to-recrawl
+    Bing: https://www.bing.com/webmasters/help/URL-Submission-62f2860b
+  -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "ACBuy spreadsheet | CAFANS Product Finds",
+    "description": "A comparison guide with CAFANS product links, estimated USD prices and an ordering checklist.",
+    "inLanguage": "en"
+  }
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #142b23;
+      --muted: #455b51;
+      --paper: #f3f6ef;
+      --white: #fff;
+      --green: #154735;
+      --lime: #d9f28f;
+      --line: #d3dfd4;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 1rem/1.6 "Instrument Sans", system-ui, sans-serif;
+    }
+    a { color: var(--green); text-underline-offset: .2em; }
+    a:hover { text-decoration-thickness: 2px; }
+    :focus-visible { outline: 3px solid #4c8a56; outline-offset: 4px; }
+    .container { width: min(69rem, calc(100% - 2rem)); margin-inline: auto; }
+    .hero {
+      margin-top: 1rem;
+      padding: clamp(2rem, 8vw, 6.5rem) clamp(1rem, 6vw, 4rem);
+      border-radius: 1.6rem;
+      text-align: center;
+      color: var(--white);
+      background: radial-gradient(ellipse at 85% 0%, #3c7151, #173c2e 62%, #102b22);
+    }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2 { line-height: 1.05; letter-spacing: -.045em; }
+    h1 { margin-bottom: 1.25rem; font-size: clamp(2.45rem, 8vw, 5.6rem); }
+    h2 { margin-bottom: .8rem; font-size: clamp(1.85rem, 4vw, 3rem); }
+    h3 { margin-bottom: .55rem; font-size: 1.1rem; }
+    .hero p { max-width: 38rem; margin: 0 auto 1.75rem; color: #e0eee4; }
+    .actions, .categories { display: flex; flex-wrap: wrap; gap: .65rem; }
+    .actions { justify-content: center; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 2.85rem;
+      border: 1px solid transparent;
+      border-radius: .65rem;
+      padding: .5rem 1rem;
+      background: var(--lime);
+      color: var(--ink);
+      font: inherit;
+      font-weight: 750;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .button.secondary { background: transparent; border-color: #91b19e; color: var(--white); }
+    .button:hover { box-shadow: inset 0 0 0 1px currentColor; }
+    .button:disabled { opacity: .65; cursor: default; }
+    section { margin-block: clamp(2.5rem, 7vw, 5rem); }
+    .muted { color: var(--muted); }
+    .categories { margin: 1.15rem 0; }
+    .categories a {
+      padding: .35rem .75rem;
+      border: 1px solid var(--line);
+      border-radius: 2rem;
+      background: var(--white);
+    }
+    .panel { background: var(--white); border: 1px solid var(--line); border-radius: 1rem; }
+    .filters {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr auto;
+      gap: .7rem;
+      align-items: end;
+      padding: 1rem;
+    }
+    [hidden] { display: none !important; }
+    label { display: grid; gap: .25rem; font-weight: 650; }
+    input, select {
+      width: 100%;
+      min-height: 2.85rem;
+      padding: .55rem;
+      border: 1px solid #899e90;
+      border-radius: .55rem;
+      background: var(--white);
+      color: var(--ink);
+      font: inherit;
+    }
+    .status { margin: 0; padding: 0 1rem .85rem; }
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; }
+    caption { padding: .85rem 1rem; text-align: left; font-weight: 750; }
+    th, td { padding: .7rem 1rem; border-top: 1px solid var(--line); text-align: left; }
+    thead th { background: #e7efe5; }
+    tbody th { font-weight: 650; }
+    .price { white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: .8rem; }
+    .steps article { padding: 1.15rem; }
+    .steps p, details p { margin-bottom: 0; }
+    details { margin-top: .6rem; padding: .8rem 1rem; }
+    summary { cursor: pointer; font-weight: 750; }
+    details p { margin-top: .55rem; }
+    footer { padding: 1.5rem 0 2rem; border-top: 1px solid var(--line); }
+    @media (max-width: 48rem) {
+      .filters { grid-template-columns: 1fr 1fr; }
+      .steps { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 29rem) {
+      .filters { grid-template-columns: 1fr; }
+      th, td { padding: .65rem .55rem; }
+    }
+  </style>
+<link rel="canonical" href="https://kakobuyfinds.github.io/rwxbz/">
+</head>
+<body>
+  <header class="container hero">
+    <h1>ACBuy spreadsheet</h1>
+    <p>Compare shoes, hoodies, T-shirts and jackets from the CAFANS catalog. Check estimated prices, build a shortlist and verify the details before ordering through a shopping agent.</p>
+    <div class="actions">
+      <a class="button" href="https://cafans.com">ACBuy spreadsheet</a>
+      <a class="button secondary" href="https://cafans.com">Buy it now</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section aria-labelledby="catalog-heading">
+      <h2 id="catalog-heading">CAFANS product catalog</h2>
+      <p class="muted">Prices are estimates in USD from the CAFANS listings. Check the product page for current availability, variants and pricing. Shipping and agent fees are separate.</p>
+      <nav class="categories" aria-label="Browse CAFANS categories">
+        <a href="https://cafans.com/category-911-Shoes.html">Shoes</a>
+        <a href="https://cafans.com/category-912-Hoodies%2FSweaters.html">Hoodies &amp; sweaters</a>
+        <a href="https://cafans.com/category-913-T-Shirts.html">T-shirts</a>
+        <a href="https://cafans.com/category-914-Jackets.html">Jackets</a>
+      </nav>
+
+      <div class="panel">
+        <div id="catalog-filters" class="filters" hidden>
+          <label>Search products
+            <input id="query" type="search" placeholder="e.g. hoodie" aria-controls="products">
+          </label>
+          <label>Category
+            <select id="category" aria-controls="products">
+              <option value="">All categories</option>
+              <option>Shoes</option>
+              <option>Hoodies &amp; sweaters</option>
+              <option>T-shirts</option>
+              <option>Jackets</option>
+            </select>
+          </label>
+          <label>Sort
+            <select id="sort" aria-controls="products">
+              <option value="featured">Featured</option>
+              <option value="low">Price: low to high</option>
+              <option value="high">Price: high to low</option>
+            </select>
+          </label>
+          <button id="export" class="button" type="button">Download results CSV</button>
+        </div>
+        <p id="result-status" class="status muted" role="status" hidden></p>
+        <div class="table-wrap" role="region" aria-label="Product comparison table" tabindex="0">
+          <table id="products">
+            <caption>Featured CAFANS listings</caption>
+            <thead>
+              <tr>
+                <th scope="col">Product</th>
+                <th scope="col">Category</th>
+                <th scope="col">Est. USD</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-price="62.36">
+                <th scope="row"><a href="https://cafans.com/goods-158791.html">Leather Slides</a></th>
+                <td>Shoes</td><td class="price">$62.36</td>
+              </tr>
+              <tr data-price="46.67">
+                <th scope="row"><a href="https://cafans.com/goods-158790.html">Platform Slides</a></th>
+                <td>Shoes</td><td class="price">$46.67</td>
+              </tr>
+              <tr data-price="27.50">
+                <th scope="row"><a href="https://cafans.com/goods-158792.html">Sweatshirt</a></th>
+                <td>Hoodies &amp; sweaters</td><td class="price">$27.50</td>
+              </tr>
+              <tr data-price="37.22">
+                <th scope="row"><a href="https://cafans.com/goods-158280.html">Thug Club - Rock Hoodie</a></th>
+                <td>Hoodies &amp; sweaters</td><td class="price">$37.22</td>
+              </tr>
+              <tr data-price="22.92">
+                <th scope="row"><a href="https://cafans.com/goods-158273.html">Kanye West Yeezy Bully Black Short Sleeve T-Shirt</a></th>
+                <td>T-shirts</td><td class="price">$22.92</td>
+              </tr>
+              <tr data-price="32.64">
+                <th scope="row"><a href="https://cafans.com/goods-158200.html">Unisex Embroidered Oversized T-Shirt</a></th>
+                <td>T-shirts</td><td class="price">$32.64</td>
+              </tr>
+              <tr data-price="42.78">
+                <th scope="row"><a href="https://cafans.com/goods-158279.html">Corteiz Jacket</a></th>
+                <td>Jackets</td><td class="price">$42.78</td>
+              </tr>
+              <tr data-price="84.54">
+                <th scope="row"><a href="https://cafans.com/goods-158222.html">Jacket</a></th>
+                <td>Jackets</td><td class="price">$84.54</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="checklist-heading">
+      <h2 id="checklist-heading">What to check before ordering</h2>
+      <div class="steps">
+        <article class="panel">
+          <h3>Confirm the exact variant</h3>
+          <p>Open the CAFANS product page and follow the source listing. Check stock for your color and size. Compare garment measurements with an item you already own.</p>
+        </article>
+        <article class="panel">
+          <h3>Verify agent support</h3>
+          <p>Check that your shopping agent accepts the exact listing. Review warehouse photo options, return deadlines and who pays return postage before placing the order.</p>
+        </article>
+        <article class="panel">
+          <h3>Compare the delivered total</h3>
+          <p>Add the item price, domestic delivery, agent fees and international shipping. Compare quotes for the same parcel dimensions and check if taxes or duties are included.</p>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="faq-heading">
+      <h2 id="faq-heading">ACBuy spreadsheet FAQ</h2>
+      <details class="panel">
+        <summary>What is an ACBuy spreadsheet?</summary>
+        <p>It is a list of products and links shoppers can use to compare items before placing an order through an agent. This guide uses CAFANS listings, and both main buttons open CAFANS.</p>
+      </details>
+      <details class="panel">
+        <summary>Can I order every listing through ACBuy?</summary>
+        <p>Eligibility depends on the seller link, the item and the agent’s current rules. Open the original listing and verify that the agent accepts it before paying.</p>
+      </details>
+      <details class="panel">
+        <summary>What should I check in warehouse QC photos?</summary>
+        <p>Check that the size label, color, quantity and visible condition match your order. If the measurements matter, ask for a photo showing the ruler placement while the return window is open.</p>
+      </details>
+      <details class="panel">
+        <summary>Can I save the catalog to Google Sheets or Excel?</summary>
+        <p>Filter the catalog and choose “Download results CSV.” The file contains the visible listings in their current order, with the product name, category, reference price and CAFANS URL.</p>
+      </details>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container muted">
+      Independent shopping guide. Catalog source and purchase information: <a href="https://cafans.com">CAFANS</a>.
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      const controls = document.querySelector('#catalog-filters');
+      const query = document.querySelector('#query');
+      const category = document.querySelector('#category');
+      const sort = document.querySelector('#sort');
+      const status = document.querySelector('#result-status');
+      const exportButton = document.querySelector('#export');
+      const body = document.querySelector('#products tbody');
+      const entries = Array.from(body.rows, row => ({
+        row,
+        title: row.cells[0].textContent.trim(),
+        category: row.cells[1].textContent.trim(),
+        price: Number(row.dataset.price),
+        url: row.cells[0].querySelector('a').href
+      }));
+      let filteredEntries = [];
+
+      function updateCatalog() {
+        const words = query.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+        const orderedEntries = entries.slice();
+
+        if (sort.value === 'low') {
+          orderedEntries.sort((first, second) => first.price - second.price);
+        } else if (sort.value === 'high') {
+          orderedEntries.sort((first, second) => second.price - first.price);
+        }
+
+        filteredEntries = [];
+        for (const entry of orderedEntries) {
+          const text = `${entry.title} ${entry.category}`.toLowerCase();
+          const matchesCategory = !category.value || entry.category === category.value;
+          const matchesQuery = words.every(word => text.includes(word));
+          entry.row.hidden = !(matchesCategory && matchesQuery);
+          if (!entry.row.hidden) filteredEntries.push(entry);
+          body.append(entry.row);
+        }
+
+        status.textContent = filteredEntries.length
+          ? `${filteredEntries.length} of ${entries.length} listings shown.`
+          : 'No matching listings. Try a different search or category.';
+        exportButton.disabled = filteredEntries.length === 0;
+      }
+
+      function csvCell(value) {
+        return `"${String(value).replaceAll('"', '""')}"`;
+      }
+
+      function downloadResults() {
+        const lines = ['Product,Category,Estimated USD,CAFANS URL'];
+        for (const entry of filteredEntries) {
+          lines.push([entry.title, entry.category, entry.price.toFixed(2), entry.url].map(csvCell).join(','));
+        }
+        const file = new Blob(['\uFEFF', lines.join('\r\n')], { type: 'text/csv;charset=utf-8' });
+        const objectUrl = URL.createObjectURL(file);
+        const link = document.createElement('a');
+        link.href = objectUrl;
+        link.download = 'acbuy-spreadsheet.csv';
+        document.body.append(link);
+        link.click();
+        link.remove();
+        window.setTimeout(() => URL.revokeObjectURL(objectUrl), 1000);
+      }
+
+      controls.hidden = false;
+      status.hidden = false;
+      query.addEventListener('input', updateCatalog);
+      category.addEventListener('change', updateCatalog);
+      sort.addEventListener('change', updateCatalog);
+      exportButton.addEventListener('click', downloadResults);
+      updateCatalog();
+    })();
+  </script>
+</body>
+</html>
